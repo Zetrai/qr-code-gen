@@ -79,7 +79,7 @@ const GenerateQR = () => {
             ''
           )}
         </div>
-        <div className="h-16 py-2">
+        <div className="h-16 cursor-pointer py-2">
           <Button check={check}>Download</Button>
         </div>
       </section>
