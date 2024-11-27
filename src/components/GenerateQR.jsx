@@ -44,7 +44,10 @@ const GenerateQR = () => {
 
   return (
     <div>
-      <BgIllustration className="absolute right-[-200px] top-1/4 h-3/5" />
+      <BgIllustration
+        className="absolute right-[-200px] top-1/4 h-3/5"
+        onClick={check}
+      />
 
       <section className="flex h-[20%] w-full flex-col">
         <h1 className="font-saira text-3xl text-primary">URL</h1>
@@ -59,7 +62,10 @@ const GenerateQR = () => {
         </div>
       </section>
 
-      <section className="flex h-[80%] w-full flex-col items-center gap-2 px-2 pt-10">
+      <section
+        className="flex h-[80%] w-full flex-col items-center gap-2 px-2 pt-10"
+        onClick={check}
+      >
         <h1 className="mb-4 font-saira text-3xl text-primary">
           <LogoQRGen />
         </h1>
