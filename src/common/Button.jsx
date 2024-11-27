@@ -1,6 +1,6 @@
 const Button = ({ children, check }) => {
   const handleTouch = (e) => {
-    onClick(e);
+    check(e);
   };
 
   return (
