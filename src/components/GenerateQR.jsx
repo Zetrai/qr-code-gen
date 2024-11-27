@@ -80,7 +80,7 @@ const GenerateQR = () => {
           )}
         </div>
         <div className="h-16 py-2">
-          <Button onClick={check}>Download</Button>
+          <Button check={check}>Download</Button>
         </div>
       </section>
     </div>

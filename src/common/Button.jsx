@@ -1,11 +1,11 @@
-const Button = ({ children, onClick }) => {
+const Button = ({ children, check }) => {
   const handleTouch = (e) => {
     onClick(e);
   };
 
   return (
     <button
-      onClick={onClick}
+      onClick={check}
       onTouchStart={handleTouch} // Add touch event handler
       className="ml-2 h-full w-fit cursor-pointer whitespace-nowrap rounded-[10px] bg-primary px-4 text-center font-montserrat text-darkText shadow-md transition-transform duration-150 active:scale-95 active:shadow-inner"
     >
