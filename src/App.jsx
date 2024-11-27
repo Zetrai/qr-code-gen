@@ -1,31 +1,32 @@
-import { BgIllustration, LogoQRGen } from './assets';
-import Button from './common/Button';
+import { useState } from 'react';
+
+import GenerateQR from './components/GenerateQR';
+import ScanQR from './components/ScanQR';
 
 const App = () => {
+  const [tab, setTab] = useState('gen');
+
+  const tabHandler = (selectedTab) => {
+    setTab(selectedTab);
+  };
+
   return (
-    <div className="bg-darkBG relative flex h-screen w-screen flex-col items-center py-12">
-      <BgIllustration className="absolute right-[-200px] top-1/4 h-3/5" />
-
-      <section className="flex-center h-[20%] w-full flex-col">
-        <h1 className="text-darkText mb-6 text-center font-saira text-2xl">
-          <LogoQRGen />
-        </h1>
-        <div className="bg-darkInput flex-center z-1 relative mx-7 h-14 w-[90%] rounded-[10px] border-2 border-primary p-2">
-          <input
-            className="font-outfit z-100 text-darkText w-full bg-transparent focus:border-transparent focus:outline-none"
-            placeholder="Enter Url Here..."
-          />
-          <Button>QR Code</Button>
-        </div>
+    <div className="relative flex h-screen w-screen flex-col items-center bg-darkBG">
+      <section className="grid-center mb-5 w-full grid-cols-2 rounded-b-3xl border-b-2 border-lightBG/20 bg-darkInput/60 font-montserrat text-darkText/60">
+        <button
+          onClick={() => tabHandler('gen')}
+          className={`w-[105%] rounded-bl-3xl p-6 transition-all duration-150 ${tab === 'gen' ? 'scale-95 bg-darkInput text-darkText' : 'hover:bg-darkInput/80'}`}
+        >
+          Generate QR
+        </button>
+        <button
+          onClick={() => tabHandler('scan')}
+          className={`w-[105%] rounded-br-3xl p-6 transition-all duration-150 ${tab === 'scan' ? 'scale-95 bg-darkInput text-darkText' : 'hover:bg-darkInput/80'}`}
+        >
+          Scan QR
+        </button>
       </section>
-
-      <section className="flex h-[80%] w-full flex-col items-center gap-2 px-2 pt-10">
-        <h1 className="font-saira text-3xl text-primary">QR</h1>
-        <div className="h-[300px] w-[300px] rounded-[10px] border-2 border-primary"></div>
-        <div className="h-16 py-2">
-          <Button>Download</Button>
-        </div>
-      </section>
+      {tab === 'gen' ? <GenerateQR /> : <ScanQR />}
     </div>
   );
 };

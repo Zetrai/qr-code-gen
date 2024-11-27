@@ -1,7 +1,8 @@
-const Button = ({ children, className }) => {
+const Button = ({ children, onClick, className }) => {
   return (
     <button
-      className={`text-darkText w-fitasd ml-2 h-full whitespace-nowrap rounded-[10px] bg-primary px-4 text-center font-montserrat ${className}`}
+      onClick={onClick}
+      className={`ml-2 h-full w-fit whitespace-nowrap rounded-[10px] bg-primary px-4 text-center font-montserrat text-darkText shadow-md transition-transform duration-150 active:scale-95 active:shadow-inner ${className}`}
     >
       {children}
     </button>
