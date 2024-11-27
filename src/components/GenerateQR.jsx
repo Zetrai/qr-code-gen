@@ -6,7 +6,6 @@ import Button from '../common/Button';
 
 const GenerateQR = () => {
   const [url, setUrl] = useState('');
-  const qrCodeRef = useState(null);
 
   const onChangeHandler = (e) => {
     setUrl(e.target.value);
