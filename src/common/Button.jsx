@@ -1,6 +1,5 @@
 const Button = ({ children, onClick }) => {
   const handleTouch = (e) => {
-    e.preventDefault();
     onClick(e);
   };
 
