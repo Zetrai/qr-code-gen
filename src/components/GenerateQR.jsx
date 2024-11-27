@@ -38,6 +38,10 @@ const GenerateQR = () => {
     setUrl('');
   };
 
+  const check = () => {
+    setUrl('');
+  };
+
   return (
     <div>
       <BgIllustration className="absolute right-[-200px] top-1/4 h-3/5" />
@@ -76,12 +80,7 @@ const GenerateQR = () => {
           )}
         </div>
         <div className="h-16 py-2">
-          <p
-            className="cursor-pointer text-darkText"
-            onClick={handleDownloadPNG}
-          >
-            Download
-          </p>
+          <Button onClick={check}>Download</Button>
         </div>
       </section>
     </div>
