@@ -22,6 +22,7 @@ export default {
         juliusSans: ['Julius Sans One', 'sans-serif'],
         archivo: ['Archivo Narrow', 'sans-serif'],
         saira: ['Saira', 'sans-serif'],
+        outfit: ['Outfit', 'sans-serif'],
       },
       colors: {
         primary: '#FF6452', // Main heading color
