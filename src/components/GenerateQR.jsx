@@ -38,16 +38,9 @@ const GenerateQR = () => {
     setUrl('');
   };
 
-  const check = () => {
-    setUrl('');
-  };
-
   return (
     <div>
-      <BgIllustration
-        className="absolute right-[-200px] top-1/4 h-3/5"
-        onClick={check}
-      />
+      <BgIllustration className="absolute right-[-200px] top-1/4 h-3/5" />
 
       <section className="flex h-[20%] w-full flex-col">
         <h1 className="font-saira text-3xl text-primary">URL</h1>
@@ -62,10 +55,7 @@ const GenerateQR = () => {
         </div>
       </section>
 
-      <section
-        className="flex h-[80%] w-full flex-col items-center gap-2 px-2 pt-10"
-        onClick={check}
-      >
+      <section className="flex h-[80%] w-full flex-col items-center gap-2 px-2 pt-10">
         <h1 className="mb-4 font-saira text-3xl text-primary">
           <LogoQRGen />
         </h1>
@@ -85,8 +75,8 @@ const GenerateQR = () => {
             ''
           )}
         </div>
-        <div className="h-16 cursor-pointer py-2" onClick={check}>
-          <Button check={check}>Download</Button>
+        <div className="h-16 cursor-pointer py-2" onClick={handleDownloadPNG}>
+          <Button>Download</Button>
         </div>
       </section>
     </div>
