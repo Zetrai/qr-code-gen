@@ -1,5 +1,6 @@
 import { QRCodeSVG } from 'qrcode.react';
 import { useState } from 'react';
+import { toPng } from 'html-to-image';
 
 import { BgIllustration, LogoQRGen } from '../assets';
 import Button from '../common/Button';
@@ -12,29 +13,27 @@ const GenerateQR = () => {
   };
 
   const handleDownloadPNG = () => {
-    const svgElement = document.getElementById('qr-code-svg');
-    if (svgElement) {
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
+    const node = document.getElementById('qr-code-svg'); // Target QR Code SVG element
+    if (node) {
+      toPng(node) // Convert SVG to PNG
+        .then((dataUrl) => {
+          const link = document.createElement('a');
+          link.href = dataUrl;
+          link.download = 'qrcode.png';
 
-      const svgData = new XMLSerializer().serializeToString(svgElement);
-      const img = new Image();
-      img.src = 'data:image/svg+xml;base64,' + btoa(svgData);
-
-      img.onload = () => {
-        const scale = window.devicePixelRatio || 1; // Adjust for mobile screen density
-        canvas.width = img.width * scale;
-        canvas.height = img.height * scale;
-        ctx.scale(scale, scale);
-        ctx.drawImage(img, 0, 0, img.width, img.height);
-
-        const dataUrl = canvas.toDataURL('image/png');
-
-        const link = document.createElement('a');
-        link.href = dataUrl;
-        link.download = 'qrcode.png';
-        link.click();
-      };
+          if (
+            navigator.userAgent.includes('Safari') &&
+            !navigator.userAgent.includes('Chrome')
+          ) {
+            // Safari-specific handling
+            window.open(dataUrl, '_blank');
+          } else {
+            link.click(); // Trigger download
+          }
+        })
+        .catch((err) => {
+          console.error('Error generating PNG', err);
+        });
     }
   };
 
@@ -48,7 +47,7 @@ const GenerateQR = () => {
           <input
             type="url"
             className="z-100 w-full bg-transparent font-outfit text-darkText focus:border-transparent focus:outline-none"
-            placeholder="Enter Url Here..."
+            placeholder="Enter URL Here..."
             value={url}
             onChange={onChangeHandler}
           />
@@ -82,4 +81,5 @@ const GenerateQR = () => {
     </div>
   );
 };
+
 export default GenerateQR;
