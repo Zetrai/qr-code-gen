@@ -76,7 +76,10 @@ const GenerateQR = () => {
           )}
         </div>
         <div className="h-16 py-2">
-          <p className="text-darkText" onClick={handleDownloadPNG}>
+          <p
+            className="cursor-pointer text-darkText"
+            onClick={handleDownloadPNG}
+          >
             Download
           </p>
         </div>
