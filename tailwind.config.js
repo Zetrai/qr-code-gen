@@ -25,16 +25,12 @@ export default {
         outfit: ['Outfit', 'sans-serif'],
       },
       colors: {
-        primary: '#FF6452', // Main heading color
-        backgroundLight: '#FAF3E0', // Light mode background
-        backgroundDark: '#0F172A', // Dark mode background
-        textLight: '#2C3E50', // Light mode text color
-        textDark: '#E2E8F0', // Dark mode text color
-        subheadingLight: '#333333', // Light mode subheading color
-        subheadingDark: '#CBD5E0', // Dark mode subheading color
-        accentGold: '#FFD166', // Accent color 1
-        accentGreen: '#06D6A0', // Accent color 2
-        accentBlue: '#118AB2', // Accent color 3
+        primary: '#3662E3', // Main heading color
+        lightBG: '#FAF3E0', // Light mode background
+        darkBG: '#111629', // Dark mode background
+        lightText: '#2C3E50', // Light mode text color
+        darkText: '#E2E8F0', // Dark mode text color
+        darkInput: '#030617',
       },
       boxShadow: {
         '3xl': '0 10px 40px rgba(0, 0, 0, 0.1)',
