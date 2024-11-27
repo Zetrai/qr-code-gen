@@ -35,6 +35,7 @@ const GenerateQR = () => {
           console.error('Error generating PNG', err);
         });
     }
+    setUrl('');
   };
 
   return (
