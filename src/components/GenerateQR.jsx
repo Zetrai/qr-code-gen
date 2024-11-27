@@ -13,7 +13,7 @@ const GenerateQR = () => {
   };
 
   const handleDownloadPNG = () => {
-    const svgElement = document.getElementById('qr-code-svg'); // Target the QR code SVG by ID
+    const svgElement = document.getElementById('qr-code-svg');
     if (svgElement) {
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
@@ -23,14 +23,14 @@ const GenerateQR = () => {
       img.src = 'data:image/svg+xml;base64,' + btoa(svgData);
 
       img.onload = () => {
-        canvas.width = img.width;
-        canvas.height = img.height;
-        ctx.drawImage(img, 0, 0);
+        const scale = window.devicePixelRatio || 1; // Adjust for mobile screen density
+        canvas.width = img.width * scale;
+        canvas.height = img.height * scale;
+        ctx.scale(scale, scale);
+        ctx.drawImage(img, 0, 0, img.width, img.height);
 
-        // Convert canvas to PNG data URL
         const dataUrl = canvas.toDataURL('image/png');
 
-        // Create a download link and trigger the download
         const link = document.createElement('a');
         link.href = dataUrl;
         link.download = 'qrcode.png';
@@ -47,6 +47,7 @@ const GenerateQR = () => {
         <h1 className="font-saira text-3xl text-primary">URL</h1>
         <div className="flex-center z-1 relative h-14 w-full rounded-[10px] border-2 border-primary bg-darkInput p-2">
           <input
+            type="url"
             className="z-100 w-full bg-transparent font-outfit text-darkText focus:border-transparent focus:outline-none"
             placeholder="Enter Url Here..."
             value={url}
