@@ -13,12 +13,12 @@ const GenerateQR = () => {
   };
 
   const handleDownloadPNG = () => {
-    if (qrCodeRef.current) {
+    const svgElement = document.getElementById('qr-code-svg'); // Target the QR code SVG by ID
+    if (svgElement) {
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
-      const svg = qrCodeRef.current;
 
-      const svgData = new XMLSerializer().serializeToString(svg);
+      const svgData = new XMLSerializer().serializeToString(svgElement);
       const img = new Image();
       img.src = 'data:image/svg+xml;base64,' + btoa(svgData);
 
@@ -43,11 +43,9 @@ const GenerateQR = () => {
     <div>
       <BgIllustration className="absolute right-[-200px] top-1/4 h-3/5" />
 
-      <section className="flex-center h-[20%] w-full flex-col">
-        <h1 className="mb-6 text-center font-saira text-2xl text-darkText">
-          <LogoQRGen />
-        </h1>
-        <div className="flex-center z-1 relative mx-7 h-14 w-[90%] rounded-[10px] border-2 border-primary bg-darkInput p-2">
+      <section className="flex h-[20%] w-full flex-col">
+        <h1 className="font-saira text-3xl text-primary">URL</h1>
+        <div className="flex-center z-1 relative h-14 w-full rounded-[10px] border-2 border-primary bg-darkInput p-2">
           <input
             className="z-100 w-full bg-transparent font-outfit text-darkText focus:border-transparent focus:outline-none"
             placeholder="Enter Url Here..."
@@ -58,11 +56,13 @@ const GenerateQR = () => {
       </section>
 
       <section className="flex h-[80%] w-full flex-col items-center gap-2 px-2 pt-10">
-        <h1 className="font-saira text-3xl text-primary">QR</h1>
+        <h1 className="mb-4 font-saira text-3xl text-primary">
+          <LogoQRGen />
+        </h1>
         <div className="flex-center h-[300px] w-[300px] rounded-[10px] border-2 border-primary">
           {url ? (
             <QRCodeSVG
-              ref={qrCodeRef}
+              id="qr-code-svg"
               value={url}
               size={256}
               bgColor="#111629"
