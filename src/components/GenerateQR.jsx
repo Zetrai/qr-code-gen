@@ -6,7 +6,7 @@ import { BgIllustration, LogoQRGen } from '../assets';
 import Button from '../common/Button';
 
 const GenerateQR = () => {
-  const [url, setUrl] = useState('test');
+  const [url, setUrl] = useState('');
 
   const onChangeHandler = (e) => {
     setUrl(e.target.value);
