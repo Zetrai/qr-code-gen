@@ -14,28 +14,20 @@ const GenerateQR = () => {
 
   const handleDownloadPNG = () => {
     const node = document.getElementById('qr-code-svg'); // Target QR Code SVG element
+    setUrl('test1');
     if (node) {
       toPng(node) // Convert SVG to PNG
         .then((dataUrl) => {
           const link = document.createElement('a');
           link.href = dataUrl;
           link.download = 'qrcode.png';
-
-          if (
-            navigator.userAgent.includes('Safari') &&
-            !navigator.userAgent.includes('Chrome')
-          ) {
-            // Safari-specific handling
-            window.open(dataUrl, '_blank');
-          } else {
-            link.click(); // Trigger download
-          }
+          link.click();
+          setUrl('');
         })
         .catch((err) => {
           console.error('Error generating PNG', err);
         });
     }
-    setUrl('');
   };
 
   return (
