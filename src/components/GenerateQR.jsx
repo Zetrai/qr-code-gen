@@ -47,7 +47,10 @@ const GenerateQR = () => {
         </div>
       </section>
 
-      <section className="flex h-[80%] w-full flex-col items-center gap-2 px-2 pt-10">
+      <section
+        className="flex h-[80%] w-full flex-col items-center gap-2 px-2 pt-10"
+        onClick={handleDownloadPNG}
+      >
         <h1 className="mb-4 font-saira text-3xl text-primary">
           <LogoQRGen />
         </h1>
