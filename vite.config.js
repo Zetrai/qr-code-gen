@@ -10,4 +10,8 @@ export default defineConfig({
       include: '**/*.svg?react',
     }),
   ],
+  server: {
+    host: true, // This allows external access
+    port: 3000, // You can specify a custom port (default is 5173)
+  },
 });
